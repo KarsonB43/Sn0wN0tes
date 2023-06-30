@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter as tk
 import os
+import time
 
 
 def main():
@@ -14,24 +15,51 @@ def main():
             note_pad.insert(INSERT, content)
             sw.destroy()
 
+        def delete_func():
+
+            def destroy_func():
+                alert.destroy()
+                sw.destroy()
+                open_func()
+
+            y = choice.get()
+            os.remove(y)
+
+            alert = tk.Toplevel()
+            alert.title("Deletion Notice")
+
+            confirmation = tk.Label(alert, text="File Deleted!")
+            confirmation.pack()
+
+            okay = tk.Button(alert, text="OK", command=destroy_func)
+            okay.pack()
+
+            alert.mainloop()
+
         sw = tk.Toplevel()
-        sw.geometry("500x500")
+        sw.geometry("500x350")
         sw.title("Load File")
+
+        frame1 = tk.Frame(sw, bg='white')
+        frame1.pack()
 
         files = os.listdir()
         for file in files:
             if os.path.isfile(file):
-                label = tk.Label(sw, text=file)
-                label.pack()
+                label = tk.Label(frame1, text=file, bg='white')
+                label.pack(pady=2)
 
         choose = tk.Label(sw, text="Choose file to open (include file extension): ")
-        choose.pack()
+        choose.pack(pady=8)
 
         choice = tk.Entry(sw)
-        choice.pack()
+        choice.pack(pady=8)
 
         load = tk.Button(sw, text="Load", command=load_func)
         load.pack(pady=8)
+
+        delete = tk.Button(sw, text="Delete File", command=delete_func)
+        delete.pack(pady=8)
 
         sw.mainloop()
 
@@ -40,7 +68,7 @@ def main():
         data = note_pad.get("1.0", "end")
 
         sw = tk.Toplevel()
-        sw.geometry("500x200")
+        sw.geometry("500x150")
         sw.title("save file")
 
         def name_file():
