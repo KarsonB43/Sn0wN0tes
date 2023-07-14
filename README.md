@@ -13,4 +13,4 @@ _Sn0wNotes is actively being developed. New features will be released soon._
 
 Newest Release:
 - July 13, 2023
-- Added bold and italic font styles
+- Added bold and italic font styles _(to style text, it must first be selected, then press the corresponding button)_
