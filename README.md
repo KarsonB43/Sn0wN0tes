@@ -7,7 +7,7 @@ _Features:_
 - save plain text files
 - open saved files
 - delete unwanted files
-- bold and italic font styles (stylized text cannot yet be saved)
+- bold and italic font styles (stylized text cannot be saved since the text editor saves as plain text)
 
 _Sn0wNotes is actively being developed. New features will be released soon._
 
