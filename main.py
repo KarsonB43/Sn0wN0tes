@@ -88,6 +88,18 @@ def main():
 
         sw.mainloop()
 
+    def bold_func():
+        try:
+            note_pad.tag_add('bold', 'sel.first', 'sel.last')
+        except Exception as ex:
+            print(ex)
+
+    def italic_func():
+        try:
+            note_pad.tag_add('italic', 'sel.first', 'sel.last')
+        except Exception as ex:
+            print(ex)
+
     window = tk.Tk()
     window.geometry("730x800")
     window.title("Sn0w N0tes")
@@ -98,11 +110,21 @@ def main():
     openfile = tk.Button(window, text="open", command=open_func)
     openfile.grid(pady=5, row=0, column=1, sticky=W+E+N+S)
 
-    note_pad = tk.Text(window, height=44, width=90)
-    note_pad.grid(row=1, columnspan=2, sticky=W+E+N+S)
+    bold = tk.Button(window, text="bold", command=bold_func)
+    bold.grid(pady=5, row=1, column=0, sticky=W+E+N+S)
+
+    italic = tk.Button(window, text="italic", command=italic_func)
+    italic.grid(pady=5, row=1, column=1, sticky=W + E + N + S)
+
+    note_pad = tk.Text(window, height=44, width=90, font=('Ariel', 10))
+    note_pad.grid(row=2, columnspan=2, sticky=W+E+N+S)
+
+    note_pad.tag_config('bold', font=('Ariel', 10, 'bold'))
+    note_pad.tag_config('italic', font=('Ariel', 10, 'italic'))
 
     window.mainloop()
 
 
 if __name__ == '__main__':
     main()
+    
